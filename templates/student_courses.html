@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Student Details</h1>
+    <table id="student-detail">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{infor.roll_number}}</td>
+                <td>{{infor.first_name}}</td>
+                <td>{{infor.last_name}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+        <h1 style="text-align: center;">Enrollment List</h1>
+    {% if his_course %}
+    <table id="enrollment-list">
+        <thead>
+            <tr>
+                <th>S No</th>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Course Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in his_course%}
+            <tr>
+                <td>{{course.course_id}}</td>
+                <td>{{course.course_code}}</td>
+                <td>{{course.course_name}}</td>
+                <td>{{course.course_description}}</td>
+                <td><a href="/student/{{infor.student_id}}/withdraw/{{course.course_id}}">Withdraw</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <br>
+    <a href="/">Go Back</a>
+</body>
+</html>
